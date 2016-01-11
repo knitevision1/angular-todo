@@ -1,0 +1,140 @@
+body {
+    background-color: $base-bg;
+    margin: 0;
+}
+
+
+.todo-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 460px;
+    text-align: center;
+    margin: 40px auto auto;
+}
+
+.tasks-wrapper {
+    margin-top: 30px;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    padding: 7px 14px;
+    border: 2px solid;
+    border-color: $task-bc;
+    cursor: pointer;
+    margin-bottom: 15px;
+    position: relative;
+    transition: border-color6000ms $cb, color 600ms $cb;
+
+    &:hover {
+        background-color: transparentize(#fff, 0.5);
+        .task-action-done {
+            opacity: 1;
+            z-index: 5;
+        }
+    }
+
+    @include taskStates();
+
+    &.task-done {
+        .task-action-done {
+            .material-icons {
+                color: $red;
+            }
+        }
+    }
+
+    .task-title {
+        font-weight: 500;
+    }
+}
+
+.task-actions {
+    display: flex;
+    margin-left: auto;
+
+    .double-actions {
+        margin-left: auto;
+        display: flex;
+        position: relative;
+        z-index: 10;
+    }
+}
+
+.task-action-done {
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 170ms $cb, background-color 170ms $cb;
+    margin: auto;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .material-icons {
+        border-radius: 50%;
+        color: $green;
+
+        &:hover {
+            color: darken($green, 10%);
+        }
+    }
+}
+
+.material-icons {
+    transition: color 250ms $cb;
+    border-radius: 50%;
+    padding: 3px;
+    color: #497285;
+    font-size: 21px !important; // override for CDN-fetched stylesheet
+
+    &:hover {
+        background-color: darken($base-bg, 3%);
+    }
+
+    &:active {
+        background-color: darken($base-bg, 8%);
+    }
+}
+
+.live-preview {
+    .task {
+        opacity: 0.5;
+    }
+}
+
+.add-task {
+    display: flex;
+
+    input[type="text"] {
+        flex: 1;
+    }
+
+    .btn {
+        margin-left: 20px;
+    }
+}
+
+.task-editing {
+    input {
+        display: block;
+    }
+
+    .task-title {
+        span {
+            display: none;
+        }
+    }
+}
+
+.task-not-editing {
+    input {
+        display: none;
+    }
+
+    span {
+        display: inline;
+    }
+}

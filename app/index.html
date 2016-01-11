@@ -4,14 +4,26 @@
         <meta charset="UTF-8">
         <title>Angular Pet To-Do App [Uladzislau] for Weholi</title>
         <link rel="stylesheet" href="assets/css/app-prefixed.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,500,600,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     </head>
     <body ng-controller="todoCtrl">
-        <todo-list></todolist>
+
+        <div class="todo-wrapper">
+            <h2>Yet Another AngularJS To-Do App</h2>
+
+            <todo-list></todo-list>
+
+            <add-task></add-task>
+        </div>
 
         <script src="assets/js/lib/angular-1.5.0.min.js"></script>
         <script src="assets/js/lib/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="app.js"></script>
         <script src="controllers/controllers.js"></script>
         <script src="directives/directives.js"></script>
+        <script src="assets/js/scripts.js"></script>
     </body>
 </html>

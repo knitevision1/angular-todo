@@ -1,10 +1,18 @@
-<div class="todo-wrapper">
-    <div ng-repeat="task in tasks">
-        <h4>{{task.title}}</h4>
+<div class="tasks-wrapper">
+    <div ng-repeat="task in tasks | orderBy:task.done" class="task" ng-class="{'task-done' : task.done, 'task-not-done' : !task.done, 'task-editing': task.editing, 'task-not-editing': !task.editing}">
+        <div class="task-title"><span>{{task.title}}</span> <input type="text" ng-model="task.title"></div>
         <div class="task-actions">
-            <div class="btn edit"></div>
-            <div class="btn delete"></div>
+            <div class="task-action-done" ng-click="actionDone(task);">
+                <i class="material-icons" ng-if="!task.done" title="Mark as done">check</i>
+                <i class="material-icons" ng-if="task.done" title="Undo">undo</i>
+            </div>
+            <div class="double-actions">
+                <div ng-click="toggleEditStates(task);">
+                    <i class="material-icons" ng-hide="task.editing">mode_edit</i>
+                    <i class="material-icons" ng-hide="!task.editing">save</i>
+                </div>
+                <div class="btn delete" ng-click="deleteTask($index)"><i class="material-icons">delete</i></div>
+            </div>
         </div>
-        <div class="done">Done</div>
     </div>
 </div>

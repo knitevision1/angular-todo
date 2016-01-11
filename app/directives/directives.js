@@ -6,3 +6,10 @@ app.directive('todoList', function() {
         templateUrl: 'templates/todo-list.html'
     }
 });
+
+app.directive('addTask', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'templates/add-task.html'
+    }
+});
