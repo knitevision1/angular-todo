@@ -9,16 +9,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // less: {
-        //     dist: {
-        //         files: {
-        //             'build/css/selecter.css': 'sources/less/selecter.less',
-        //             'build/css/checkbox.css': 'sources/less/checkbox.less',
-        //             'build/css/scrollbar.css': 'sources/less/scrollbar.less',
-        //         }
-        //     }
-        // },
-
         watch: {
             css: {
                 files: ['sources/sass/*', 'app/assets/css/app.css'],

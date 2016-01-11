@@ -8,7 +8,7 @@ app.controller('todoCtrl', function($scope) {
 
     else {
         $scope.tasks = [
-            {'title': 'Wash the hair', 'done': true, 'editing': false},
+            {'title': 'Wash hair', 'done': true, 'editing': false},
             {'title': 'Eat', 'done': false, 'editing': false},
             {'title': 'Have a coffee', 'done': false, 'editing': false}
         ];
@@ -32,12 +32,15 @@ app.controller('todoCtrl', function($scope) {
         else {
             task.done = true
         }
+
+        saveToLocal();
     }
 
     $scope.deleteTask = function(id) {
         var currentTask = $scope.tasks[id];
-
         $scope.tasks.splice(id, 1);
+
+        saveToLocal();
     }
 
     $scope.addTask = function(task) {

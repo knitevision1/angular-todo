@@ -1,8 +1,12 @@
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
 body {
     background-color: $base-bg;
     margin: 0;
 }
-
 
 .todo-wrapper {
     display: flex;
@@ -25,14 +29,10 @@ body {
     cursor: pointer;
     margin-bottom: 15px;
     position: relative;
-    transition: border-color6000ms $cb, color 600ms $cb;
+    transition: border-color 700ms $cb, color 700ms $cb;
 
     &:hover {
         background-color: transparentize(#fff, 0.5);
-        .task-action-done {
-            opacity: 1;
-            z-index: 5;
-        }
     }
 
     @include taskStates();
@@ -63,9 +63,6 @@ body {
 }
 
 .task-action-done {
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 170ms $cb, background-color 170ms $cb;
     margin: auto;
     height: 24px;
     width: 24px;
@@ -96,6 +93,7 @@ body {
 
     &:active {
         background-color: darken($base-bg, 8%);
+        @include box-shadow-press(8px, 0.3);
     }
 }
 
@@ -104,6 +102,8 @@ body {
         opacity: 0.5;
     }
 }
+
+// task adding 'form'
 
 .add-task {
     display: flex;
@@ -117,6 +117,8 @@ body {
     }
 }
 
+// states of editing to toggle between hiding & showing input & task title
+
 .task-editing {
     input {
         display: block;
@@ -127,6 +129,11 @@ body {
             display: none;
         }
     }
+    //hiding 'do' checkmark for better UX
+    .task-action-done {
+        opacity: 0;
+        z-index: -1;
+    }
 }
 
 .task-not-editing {
@@ -136,5 +143,13 @@ body {
 
     span {
         display: inline;
+    }
+}
+
+@include max-width(640px) {
+    .todo-wrapper {
+        margin-left: 15px;
+        margin-right: 15px;
+        max-width: none;
     }
 }
