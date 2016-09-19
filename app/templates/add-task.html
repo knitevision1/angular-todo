@@ -1,0 +1,9 @@
+<div class="live-preview">
+    <div class="task" ng-show="livePreview">
+        <div class="task-title">{{livePreview}}</div>
+    </div>
+</div>
+<div class="add-task">
+    <input type="text" ng-model="livePreview" placeholder="Add a New Task">
+    <button class="btn" ng-click="addTask(task)">Add a Task</button>
+</div>
